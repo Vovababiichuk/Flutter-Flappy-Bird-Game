@@ -16,7 +16,8 @@ class Bird extends SpriteGroupComponent<BirdMovement>
     size = Vector2(50, 40);
     // поточний стан для руху птаха
     current = BirdMovement.middle;
-    position = Vector2(50, 50);
+    // size.y / 2 - віднімаємо висоту самого птаха
+    position = Vector2(50, gameRef.size.y / 2 - size.y / 2);
     sprites = {
       BirdMovement.middle: birdMidFlap,
       BirdMovement.up: birdUpFlap,
