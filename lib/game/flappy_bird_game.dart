@@ -13,6 +13,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   // створимо экземпляр класу bird
   late Bird bird;
   Timer interval = Timer(Config.pipeInterval, repeat: true);
+  bool isHit = false;
 
   @override
   Future<void> onLoad() async {

@@ -12,15 +12,31 @@ class GameOverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.black38,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
+        color: Colors.black38,
+        child: Center(
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
             Image.asset(Assets.gameOver),
-          ]
-        ),
-      )
-    );
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: onRestart,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange[400],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                )
+              ),
+              child: const Text(
+                'Restart',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            )
+          ]),
+        ));
+  }
+
+  void onRestart() {
+    game.bird.reset();
+    game.overlays.remove('gameOver');
+    game.resumeEngine();
   }
 }
