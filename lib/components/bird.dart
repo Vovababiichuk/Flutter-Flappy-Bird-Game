@@ -52,7 +52,11 @@ class Bird extends SpriteGroupComponent<BirdMovement>
     PositionComponent other,
   ) {
     super.onCollisionStart(intersectionPoints, other);
-    debugPrint('Collision Detected');
+    gameOver();
+  }
+
+  void gameOver() {
+    gameRef.pauseEngine();
   }
 
   @override
