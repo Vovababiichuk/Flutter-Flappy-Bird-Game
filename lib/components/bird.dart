@@ -2,12 +2,13 @@ import 'package:bird_game_app/game/assets.dart';
 import 'package:bird_game_app/game/bird_movement.dart';
 import 'package:bird_game_app/game/configuration.dart';
 import 'package:bird_game_app/game/flappy_bird_game.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flutter/widgets.dart';
 
 class Bird extends SpriteGroupComponent<BirdMovement>
-    with HasGameRef<FlappyBirdGame> {
+    with HasGameRef<FlappyBirdGame>, CollisionCallbacks {
   Bird();
 
   @override
@@ -26,6 +27,8 @@ class Bird extends SpriteGroupComponent<BirdMovement>
       BirdMovement.up: birdUpFlap,
       BirdMovement.down: birdDownFlap,
     };
+
+    add(CircleHitbox());
   }
 
   void fly() {
@@ -41,6 +44,15 @@ class Bird extends SpriteGroupComponent<BirdMovement>
       ),
     );
     current = BirdMovement.up;
+  }
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+    debugPrint('Collision Detected');
   }
 
   @override
