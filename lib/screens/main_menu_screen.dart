@@ -25,6 +25,7 @@ class MainMenuScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
+        child: Image.asset(Assets.message),
       ),
     );
   }
