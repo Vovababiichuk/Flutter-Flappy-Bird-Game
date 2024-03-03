@@ -3,10 +3,11 @@ import 'package:bird_game_app/components/bird.dart';
 import 'package:bird_game_app/components/ground.dart';
 import 'package:bird_game_app/components/pipe_group.dart';
 import 'package:bird_game_app/game/configuration.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
 
-class FlappyBirdGame extends FlameGame {
+class FlappyBirdGame extends FlameGame with TapDetector {
   FlappyBirdGame();
 
   // створимо экземпляр класу bird
@@ -23,6 +24,12 @@ class FlappyBirdGame extends FlameGame {
     ]);
 
     interval.onTick = () => add(PipeGroup());
+  }
+
+  @override
+  void onTap() {
+    super.onTap();
+    bird.fly();
   }
 
   @override
