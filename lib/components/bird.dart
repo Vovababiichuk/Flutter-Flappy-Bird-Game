@@ -1,5 +1,6 @@
 import 'package:bird_game_app/game/assets.dart';
 import 'package:bird_game_app/game/bird_movement.dart';
+import 'package:bird_game_app/game/configuration.dart';
 import 'package:bird_game_app/game/flappy_bird_game.dart';
 import 'package:flame/components.dart';
 
@@ -24,4 +25,11 @@ class Bird extends SpriteGroupComponent<BirdMovement>
       BirdMovement.down: birdDownFlap,
     };
   }
+
+@override
+void update(double dt) {
+  super.update(dt);
+  position.y += Config.birdVelocity * dt;
+}
+
 }
