@@ -4,7 +4,6 @@ import 'package:bird_game_app/game/configuration.dart';
 import 'package:bird_game_app/game/flappy_bird_game.dart';
 import 'package:bird_game_app/game/pipe_position.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/foundation.dart';
 
 import 'pipe.dart';
 
@@ -18,12 +17,15 @@ class PipeGroup extends PositionComponent with HasGameRef<FlappyBirdGame> {
     position.x = gameRef.size.x;
 
     final heightMinusGround = gameRef.size.y - Config.groundHeight;
-    final spacing = 100 + _random.nextDouble() * (heightMinusGround / 4);
-    final centerY = spacing + _random.nextDouble() * (heightMinusGround - spacing);
+    final spacing = 120 + _random.nextDouble() * (heightMinusGround / 4);
+    final centerY =
+        spacing + _random.nextDouble() * (heightMinusGround - spacing);
 
     addAll([
-      Pipe(pipePosition: PipePosition.top, height: centerY - spacing / 2 ),
-      Pipe(pipePosition: PipePosition.bottom, height: heightMinusGround - (centerY + spacing / 2)),
+      Pipe(pipePosition: PipePosition.top, height: centerY - spacing / 2),
+      Pipe(
+          pipePosition: PipePosition.bottom,
+          height: heightMinusGround - (centerY + spacing / 2)),
     ]);
   }
 
@@ -36,11 +38,16 @@ class PipeGroup extends PositionComponent with HasGameRef<FlappyBirdGame> {
     if (position.x < -40) {
       removeFromParent();
       // debugPrint('Pipe removed');
+      updateScore();
     }
 
     if (gameRef.isHit) {
       removeFromParent();
       gameRef.isHit = false;
     }
+  }
+
+  void updateScore() {
+    gameRef.bird.score += 1;
   }
 }
