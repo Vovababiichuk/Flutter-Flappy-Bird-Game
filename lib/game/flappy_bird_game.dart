@@ -2,10 +2,12 @@ import 'package:bird_game_app/components/background.dart';
 import 'package:bird_game_app/components/bird.dart';
 import 'package:bird_game_app/components/ground.dart';
 import 'package:bird_game_app/components/pipe_group.dart';
+import 'package:bird_game_app/game/assets.dart';
 import 'package:bird_game_app/game/configuration.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/painting.dart';
 
 class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
@@ -24,6 +26,8 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       PipeGroup(),
       score = buildScore(),
     ]);
+
+    await FlameAudio.loopLongAudio(Assets.muz);
 
     interval.onTick = () => add(PipeGroup());
   }
