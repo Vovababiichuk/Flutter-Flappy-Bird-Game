@@ -1,5 +1,5 @@
 class Assets {
-  static const backgorund = 'background.png';
+  static const backgorund = 'background.jpg';
   static const ground = 'ground.png';
   static const clouds = 'clouds.png';
   static const pipe = 'pipe.png';
@@ -10,7 +10,7 @@ class Assets {
   static const birdDownFlap = 'bird_downflap.png';
 
   static const gameOver = 'assets/images/gameover.png';
-  static const menu = 'assets/images/menu.jpg';
+  static const menu = 'assets/images/background.jpg';
   static const message = 'assets/images/message.png';
 
   static const flying = 'fly.wav';

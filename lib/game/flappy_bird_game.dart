@@ -8,6 +8,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
@@ -38,7 +39,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
         anchor: Anchor.center,
         textRenderer: TextPaint(
           style: const TextStyle(
-              fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold),
+              fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold, color: Color.fromARGB(255, 255, 175, 55)),
         ));
   }
 
